@@ -1,15 +1,11 @@
 import React from 'react'
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { signIn, useSession, signOut } from 'next-auth/react'
 import { FiX } from 'react-icons/fi'
 import styles from './styles.module.scss'
 
 export const SignInButton = () => {
-  // const isUserLoggedIn = false;
   const { data: session } = useSession()
-  // console.log("session", loggedIn)
-  // const session = useSession()
-  console.log("session", session)
 
    return session?.user ? (
     (
@@ -21,10 +17,16 @@ export const SignInButton = () => {
     )
    ) : (
     (
+      <>
+      <button className={styles.signInButton} onClick={() => signIn('google')}>
+      <FaGoogle color='#eba417' />
+      Entrar com Google
+    </button>
       <button className={styles.signInButton} onClick={() => signIn('github')}>
         <FaGithub color='#eba417' />
         Entrar com Github
       </button>
+      </>
     )
    )
 }
