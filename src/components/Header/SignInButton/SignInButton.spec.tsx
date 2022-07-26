@@ -9,7 +9,7 @@ describe("SignInButton component", () => {
     const useSessionMocked = mocked(useSession)
     useSessionMocked.mockReturnValueOnce({
       data: null,
-      status: "unauthenticated",
+      status: "unauthenticated"
     })
 
     render(<SignInButton />)
@@ -27,13 +27,12 @@ describe("SignInButton component", () => {
         user: {
           email: "giovane@giovane",
           name: "Giovane",
-          image: "https://avatars0.githubusercontent.com/u/123456789?v=4",
-        },
-      },
+          image: "https://avatars0.githubusercontent.com/u/123456789?v=4"
+        }
+      }
     })
 
-    const { debug } = render(<SignInButton />)
-    debug()
+    render(<SignInButton />)
     expect(screen.getByText("Olá Giovane")).toBeInTheDocument()
   })
 })

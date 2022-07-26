@@ -7,14 +7,13 @@ const posts = [
     slug: "pagina-1",
     title: "Página 1",
     excerpt: "essa é a pagina 1, confia",
-    updatedAt: "Março, 10",
-  },
+    updatedAt: "Março, 10"
+  }
 ]
 jest.mock("../../services/prismic")
 describe("Posts page", () => {
   it("Renders correctly", () => {
-    const { debug } = render(<Posts posts={posts} />)
-    debug()
+    render(<Posts posts={posts} />)
     expect(screen.getByText("Página 1")).toBeInTheDocument()
   })
 
@@ -29,20 +28,20 @@ describe("Posts page", () => {
               title: [
                 {
                   type: "heading",
-                  text: "Example",
-                },
+                  text: "Example"
+                }
               ],
               content: [
                 {
                   type: "paragraph",
-                  text: "meu texto de exemplo",
-                },
-              ],
+                  text: "meu texto de exemplo"
+                }
+              ]
             },
-            last_publication_date: "04-01-2021",
-          },
-        ],
-      }),
+            last_publication_date: "04-01-2021"
+          }
+        ]
+      })
     } as any)
     const response = await getStaticProps({})
     expect(response).toEqual(
@@ -53,10 +52,10 @@ describe("Posts page", () => {
               slug: "my-new-post",
               title: "Example",
               excerpt: "meu texto de exemplo",
-              updatedAt: "01 de abril de 2021",
-            },
-          ],
-        },
+              updatedAt: "01 de abril de 2021"
+            }
+          ]
+        }
       })
     )
   })
